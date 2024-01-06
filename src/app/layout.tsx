@@ -8,9 +8,6 @@ import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 
 import CssBaseline from "@mui/material/CssBaseline"
-import Box from "@mui/material/Box"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -28,20 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <CssBaseline />
-
-        <Header />
-
-        <Box
-          sx={{
-            marginTop: "2rem",
-            marginBottom: "2rem",
-          }}
-          component="main"
-        >
-          {children}
-        </Box>
-
-        <Footer />
+        {children}
       </body>
     </html>
   )

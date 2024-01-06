@@ -5,9 +5,11 @@ const useItem = async (itemId: string) => {
   const item = {
     id: itemId,
     name: "牛乳",
-    limit: "2024-01-01（5 日前）",
+    limit: "2024-01-01",
     repeat: true,
-    repeatPeriod: "2 週",
+    repeatDuration: {
+      days: 2,
+    },
   }
 
   return {

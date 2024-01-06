@@ -1,5 +1,6 @@
+import EditItemForm from "@/components/EditItemForm"
 import useItem from "@/hooks/useItem"
-import { Button } from "@mui/material"
+import { Box, Container } from "@mui/material"
 
 const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
   params,
@@ -9,16 +10,16 @@ const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
   const { item } = await useItem(params.itemId)
   const update = async (formData: FormData) => {
     "use server"
+    // TODO
     console.log("test", formData)
   }
 
   return (
-    <form action={update}>
-      <h2>編集</h2>
-      <input name="name" type="text" value={item.name} />
-      <Button>キャンセル</Button>
-      <Button type="submit">OK</Button>
-    </form>
+    <Container>
+      <Box component="form" action={update}>
+        <EditItemForm item={item} />
+      </Box>
+    </Container>
   )
 }
 

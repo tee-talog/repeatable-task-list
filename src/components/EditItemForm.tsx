@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material"
 import React, { useMemo, useState } from "react"
+import NextLink from "next/link"
 
 const EditItemForm: React.FC<{ item: any }> = ({ item }) => {
   const [repeat, setRepeat] = useState(item.repeat)
@@ -78,7 +79,7 @@ const EditItemForm: React.FC<{ item: any }> = ({ item }) => {
       </Box>
 
       <Box>
-        <Button variant="outlined" href="/">
+        <Button variant="outlined" component={NextLink} href="/">
           キャンセル
         </Button>
         <Button variant="contained" type="submit">

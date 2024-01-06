@@ -1,9 +1,13 @@
-const ItemsId: React.FC<{ params: { itemId: string } }> = ({
+import useItem from "@/hooks/useItem"
+
+const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
   params,
 }: {
   params: { itemId: string }
 }) => {
-  return <div>{params.itemId} default</div>
+  const { item } = await useItem(params.itemId)
+
+  return <div>{item.name}</div>
 }
 
 export default ItemsId

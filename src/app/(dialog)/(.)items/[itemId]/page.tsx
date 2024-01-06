@@ -1,3 +1,4 @@
+import useItem from "@/hooks/useItem"
 import {
   Button,
   Dialog,
@@ -6,16 +7,18 @@ import {
   DialogTitle,
 } from "@mui/material"
 
-const ItemsId: React.FC<{ params: { itemId: string } }> = ({
+const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
   params,
 }: {
   params: { itemId: string }
 }) => {
+  const { item } = await useItem(params.itemId)
+
   return (
     <Dialog open={true}>
       <DialogTitle>編集</DialogTitle>
 
-      <DialogContent>{params.itemId}</DialogContent>
+      <DialogContent>{item.name}</DialogContent>
 
       <DialogActions>
         <Button>キャンセル</Button>

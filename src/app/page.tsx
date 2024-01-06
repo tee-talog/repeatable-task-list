@@ -4,7 +4,7 @@ import Container from "@mui/material/Container"
 
 export default function Home() {
   return (
-    <Container maxWidth="xl" component="main">
+    <Container maxWidth="xl">
       <Box>
         <Button variant="contained">Hello world</Button>
       </Box>

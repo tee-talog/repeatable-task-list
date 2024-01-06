@@ -9,6 +9,8 @@ import "@fontsource/roboto/700.css"
 
 import CssBaseline from "@mui/material/CssBaseline"
 import Box from "@mui/material/Box"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,23 +29,19 @@ export default function RootLayout({
       <body className={inter.className}>
         <CssBaseline />
 
+        <Header />
+
         <Box
           sx={{
-            minHeight: "100vh",
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 1,
-            gridTemplateRows: "60px 1fr 60px",
-            gridTemplateAreas: `"header header header header"
-              "main main main sidebar"
-              "footer footer footer footer"`,
+            marginTop: "2rem",
+            marginBottom: "2rem",
           }}
+          component="main"
         >
-          <Box sx={{ gridArea: "header" }}>Header</Box>
-          <Box sx={{ gridArea: "main" }}>{children}</Box>
-          <Box sx={{ gridArea: "sidebar" }}>Sidebar</Box>
-          <Box sx={{ gridArea: "footer" }}>Footer</Box>
+          {children}
         </Box>
+
+        <Footer />
       </body>
     </html>
   )

@@ -2,6 +2,16 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
+import "@fontsource/roboto/300.css"
+import "@fontsource/roboto/400.css"
+import "@fontsource/roboto/500.css"
+import "@fontsource/roboto/700.css"
+
+import CssBaseline from "@mui/material/CssBaseline"
+import Box from "@mui/material/Box"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -16,7 +26,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <CssBaseline />
+
+        <Header />
+
+        <Box
+          sx={{
+            marginTop: "2rem",
+            marginBottom: "2rem",
+          }}
+          component="main"
+        >
+          {children}
+        </Box>
+
+        <Footer />
+      </body>
     </html>
   )
 }

@@ -1,7 +1,13 @@
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      main content
-    </main>
+    <Container maxWidth="xl">
+      <Box>
+        <Button variant="contained">Hello world</Button>
+      </Box>
+    </Container>
   )
 }

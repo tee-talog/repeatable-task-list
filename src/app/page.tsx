@@ -1,5 +1,4 @@
 import useShoppingList from "@/hooks/useShoppingList"
-import { CheckBox } from "@mui/icons-material"
 import {
   Box,
   Button,
@@ -49,7 +48,9 @@ export default async function Home() {
                     />
                   </TableCell>
                   <TableCell>
-                    <Button variant="outlined">編集</Button>
+                    <Button variant="outlined" href={`/items/${item.id}`}>
+                      編集
+                    </Button>
                   </TableCell>
                   <TableCell>
                     <Button variant="contained" color="success">

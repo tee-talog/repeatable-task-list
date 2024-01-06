@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Checkbox,
+  FormControlLabel,
   Table,
   TableBody,
   TableCell,
@@ -13,6 +14,31 @@ import {
 import Container from "@mui/material/Container"
 
 export default function Home() {
+  // TODO mock
+  const items = [
+    {
+      id: "aaa",
+      name: "牛乳",
+      limit: "2024-01-01（5 日前）",
+      repeat: true,
+      repeatPeriod: "2 週",
+    },
+    {
+      id: "bbb",
+      name: "たまご",
+      limit: "2024-01-08",
+      repeat: true,
+      repeatPeriod: "2 週",
+    },
+    {
+      id: "ccc",
+      name: "お菓子",
+      limit: "2024-01-09",
+      repeat: false,
+      repeatPeriod: "2 週",
+    },
+  ]
+
   return (
     <Container maxWidth="xl">
       <Box>
@@ -23,27 +49,37 @@ export default function Home() {
                 <TableCell>買うもの</TableCell>
                 <TableCell sx={{ width: "250px" }}>期限</TableCell>
                 <TableCell sx={{ width: "200px" }}>リピート</TableCell>
-                <TableCell sx={{ width: "200px" }}></TableCell>
-                <TableCell sx={{ width: "200px" }}></TableCell>
+                <TableCell sx={{ width: "150px" }}></TableCell>
+                <TableCell sx={{ width: "150px" }}></TableCell>
               </TableRow>
             </TableHead>
 
             <TableBody>
-              <TableRow hover>
-                <TableCell>牛乳</TableCell>
-                <TableCell>2024-01-01（5 日前）</TableCell>
-                <TableCell>
-                  <Checkbox inputProps={{ "aria-label": "リピート" }} />
-                </TableCell>
-                <TableCell>
-                  <Button variant="outlined">編集</Button>
-                </TableCell>
-                <TableCell>
-                  <Button variant="contained" color="success">
-                    買った
-                  </Button>
-                </TableCell>
-              </TableRow>
+              {items.map((item) => (
+                <TableRow hover key={item.id}>
+                  <TableCell>{item.name}</TableCell>
+                  <TableCell>{item.limit}</TableCell>
+                  <TableCell>
+                    <FormControlLabel
+                      label={item.repeatPeriod}
+                      control={
+                        <Checkbox
+                          inputProps={{ "aria-label": "リピート" }}
+                          checked={item.repeat}
+                        />
+                      }
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Button variant="outlined">編集</Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button variant="contained" color="success">
+                      買った
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

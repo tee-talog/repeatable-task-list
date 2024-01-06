@@ -1,4 +1,5 @@
-import useItem from "@/hooks/useItem"
+"use client"
+
 import {
   Button,
   Dialog,
@@ -7,13 +8,7 @@ import {
   DialogTitle,
 } from "@mui/material"
 
-const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
-  params,
-}: {
-  params: { itemId: string }
-}) => {
-  const { item } = await useItem(params.itemId)
-
+const EditFormDialog: React.FC<{ item: any }> = ({ item }) => {
   return (
     <Dialog open={true}>
       <DialogTitle>編集</DialogTitle>
@@ -21,11 +16,11 @@ const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
       <DialogContent>{item.name}</DialogContent>
 
       <DialogActions>
-        <Button>キャンセル</Button>
+        <Button onClick={() => history.back()}>キャンセル</Button>
         <Button>OK</Button>
       </DialogActions>
     </Dialog>
   )
 }
 
-export default ItemsId
+export default EditFormDialog

@@ -7,7 +7,6 @@ const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
   params: { itemId: string }
 }) => {
   const { item } = await useItem(params.itemId)
-
   return <EditFormDialog item={item} />
 }
 

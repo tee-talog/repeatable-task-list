@@ -4,8 +4,10 @@ import Footer from "@/components/Footer"
 
 export default function RootLayout({
   children,
+  dialog,
 }: {
   children: React.ReactNode
+  dialog: React.ReactNode
 }) {
   return (
     <>
@@ -19,6 +21,7 @@ export default function RootLayout({
         component="main"
       >
         {children}
+        {dialog}
       </Box>
 
       <Footer />

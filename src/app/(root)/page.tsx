@@ -1,5 +1,4 @@
 import useShoppingList from "@/hooks/useShoppingList"
-import { CheckBox } from "@mui/icons-material"
 import {
   Box,
   Button,
@@ -13,6 +12,7 @@ import {
   TableRow,
 } from "@mui/material"
 import Container from "@mui/material/Container"
+import NextLink from "next/link"
 
 export default async function Home() {
   const { items } = await useShoppingList()
@@ -39,7 +39,7 @@ export default async function Home() {
                   <TableCell>{item.limit}</TableCell>
                   <TableCell>
                     <FormControlLabel
-                      label={item.repeatPeriod}
+                      label={item.repeatDuration}
                       control={
                         <Checkbox
                           inputProps={{ "aria-label": "リピート" }}
@@ -49,7 +49,13 @@ export default async function Home() {
                     />
                   </TableCell>
                   <TableCell>
-                    <Button variant="outlined">編集</Button>
+                    <Button
+                      variant="outlined"
+                      component={NextLink}
+                      href={`/items/${item.id}`}
+                    >
+                      編集
+                    </Button>
                   </TableCell>
                   <TableCell>
                     <Button variant="contained" color="success">

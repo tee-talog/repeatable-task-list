@@ -7,6 +7,9 @@ import "@fontsource/roboto/400.css"
 import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 
+import CssBaseline from "@mui/material/CssBaseline"
+import Box from "@mui/material/Box"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -21,7 +24,27 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <CssBaseline />
+
+        <Box
+          sx={{
+            minHeight: "100vh",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 1,
+            gridTemplateRows: "60px 1fr 60px",
+            gridTemplateAreas: `"header header header header"
+              "main main main sidebar"
+              "footer footer footer footer"`,
+          }}
+        >
+          <Box sx={{ gridArea: "header" }}>Header</Box>
+          <Box sx={{ gridArea: "main" }}>{children}</Box>
+          <Box sx={{ gridArea: "sidebar" }}>Sidebar</Box>
+          <Box sx={{ gridArea: "footer" }}>Footer</Box>
+        </Box>
+      </body>
     </html>
   )
 }

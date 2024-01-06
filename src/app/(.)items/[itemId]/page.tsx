@@ -3,7 +3,7 @@ const ItemsId: React.FC<{ params: { itemId: string } }> = ({
 }: {
   params: { itemId: string }
 }) => {
-  return <div>{params.itemId} default</div>
+  return <div>{params.itemId} intercepting</div>
 }
 
 export default ItemsId

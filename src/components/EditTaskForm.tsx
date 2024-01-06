@@ -12,8 +12,8 @@ import {
 import React, { useMemo, useState } from "react"
 import NextLink from "next/link"
 
-const EditItemForm: React.FC<{ item: any }> = ({ item }) => {
-  const [repeat, setRepeat] = useState(item.repeat)
+const EditTaskForm: React.FC<{ task: any }> = ({ task }) => {
+  const [repeat, setRepeat] = useState(task.repeat)
   const changeRepeat = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setRepeat(() => ev.target.checked)
   }
@@ -21,10 +21,10 @@ const EditItemForm: React.FC<{ item: any }> = ({ item }) => {
   // TODO 入力方法を考える or UI ライブラリを探す
   const repeatDuration = useMemo(
     () =>
-      Object.entries(item.repeatDuration)
+      Object.entries(task.repeatDuration)
         .filter((e) => !!e)
         .map((e) => e[1] + e[0]),
-    [item.repeatDuration],
+    [task.repeatDuration],
   )
 
   return (
@@ -37,7 +37,7 @@ const EditItemForm: React.FC<{ item: any }> = ({ item }) => {
           type="text"
           label="名前"
           required
-          defaultValue={item.name}
+          defaultValue={task.name}
         />
       </Box>
 
@@ -47,7 +47,7 @@ const EditItemForm: React.FC<{ item: any }> = ({ item }) => {
           type="date"
           label="期限"
           required
-          defaultValue={item.limit}
+          defaultValue={task.limit}
         />
       </Box>
 
@@ -90,4 +90,4 @@ const EditItemForm: React.FC<{ item: any }> = ({ item }) => {
   )
 }
 
-export default EditItemForm
+export default EditTaskForm

@@ -1,13 +1,13 @@
-import EditItemForm from "@/components/EditItemForm"
-import useItem from "@/hooks/useItem"
+import EditTaskForm from "@/components/EditTaskForm"
+import useTask from "@/hooks/useTask"
 import { Box, Container } from "@mui/material"
 
-const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
+const TasksId: React.FC<{ params: { taskId: string } }> = async ({
   params,
 }: {
-  params: { itemId: string }
+  params: { taskId: string }
 }) => {
-  const { item } = await useItem(params.itemId)
+  const { task } = await useTask(params.taskId)
   const update = async (formData: FormData) => {
     "use server"
     // TODO
@@ -17,10 +17,10 @@ const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
   return (
     <Container>
       <Box component="form" action={update}>
-        <EditItemForm item={item} />
+        <EditTaskForm task={task} />
       </Box>
     </Container>
   )
 }
 
-export default ItemsId
+export default TasksId

@@ -39,7 +39,7 @@ export default async function Home() {
                   <TableCell>{item.limit}</TableCell>
                   <TableCell>
                     <FormControlLabel
-                      label={item.repeatPeriod}
+                      label={item.repeatDuration}
                       control={
                         <Checkbox
                           inputProps={{ "aria-label": "リピート" }}

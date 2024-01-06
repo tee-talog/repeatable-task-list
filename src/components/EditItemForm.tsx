@@ -69,7 +69,7 @@ const EditItemForm: React.FC<{ item: any }> = ({ item }) => {
 
       <Box>
         <TextField
-          name="repeatPeriod"
+          name="repeatDuration"
           type="text"
           label="繰り返し周期"
           defaultValue={repeatDuration}

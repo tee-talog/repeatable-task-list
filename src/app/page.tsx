@@ -12,6 +12,7 @@ import {
   TableRow,
 } from "@mui/material"
 import Container from "@mui/material/Container"
+import NextLink from "next/link"
 
 export default async function Home() {
   const { items } = await useShoppingList()
@@ -48,7 +49,11 @@ export default async function Home() {
                     />
                   </TableCell>
                   <TableCell>
-                    <Button variant="outlined" href={`/items/${item.id}`}>
+                    <Button
+                      variant="outlined"
+                      component={NextLink}
+                      href={`/items/${item.id}`}
+                    >
                       編集
                     </Button>
                   </TableCell>

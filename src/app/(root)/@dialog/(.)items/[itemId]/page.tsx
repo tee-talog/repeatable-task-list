@@ -7,7 +7,12 @@ const ItemsId: React.FC<{ params: { itemId: string } }> = async ({
   params: { itemId: string }
 }) => {
   const { item } = await useItem(params.itemId)
-  return <EditFormDialog item={item} />
+  const update = async (formData: FormData) => {
+    "use server"
+    console.log("test", formData)
+  }
+
+  return <EditFormDialog item={item} onUpdate={update} />
 }
 
 export default ItemsId

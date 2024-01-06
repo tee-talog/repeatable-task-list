@@ -7,17 +7,29 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material"
+import { useId } from "react"
 
-const EditFormDialog: React.FC<{ item: any }> = ({ item }) => {
+const EditFormDialog: React.FC<{
+  item: any
+  onUpdate: (formData: FormData) => void
+}> = ({ item, onUpdate }) => {
+  const id = useId()
+
   return (
     <Dialog open={true}>
       <DialogTitle>編集</DialogTitle>
 
-      <DialogContent>{item.name}</DialogContent>
+      <DialogContent>
+        <form action={onUpdate} id={id}>
+          <input name="name" type="text" value={item.name} />
+        </form>
+      </DialogContent>
 
       <DialogActions>
         <Button onClick={() => history.back()}>キャンセル</Button>
-        <Button>OK</Button>
+        <Button type="submit" form={id}>
+          OK
+        </Button>
       </DialogActions>
     </Dialog>
   )

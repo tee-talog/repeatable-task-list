@@ -1,4 +1,4 @@
-import useShoppingList from "@/hooks/useShoppingList"
+import useTasks from "@/hooks/useTasks"
 import {
   Box,
   Button,
@@ -15,7 +15,7 @@ import Container from "@mui/material/Container"
 import NextLink from "next/link"
 
 export default async function Home() {
-  const { items } = await useShoppingList()
+  const { tasks } = await useTasks()
 
   return (
     <Container maxWidth="xl">
@@ -24,7 +24,7 @@ export default async function Home() {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell>買うもの</TableCell>
+                <TableCell>タスク</TableCell>
                 <TableCell sx={{ width: "250px" }}>期限</TableCell>
                 <TableCell sx={{ width: "200px" }}>リピート</TableCell>
                 <TableCell sx={{ width: "150px" }}></TableCell>
@@ -33,17 +33,17 @@ export default async function Home() {
             </TableHead>
 
             <TableBody>
-              {items.map((item) => (
-                <TableRow hover key={item.id}>
-                  <TableCell>{item.name}</TableCell>
-                  <TableCell>{item.limit}</TableCell>
+              {tasks.map((task) => (
+                <TableRow hover key={task.id}>
+                  <TableCell>{task.name}</TableCell>
+                  <TableCell>{task.limit}</TableCell>
                   <TableCell>
                     <FormControlLabel
-                      label={item.repeatDuration}
+                      label={task.repeatDuration}
                       control={
                         <Checkbox
                           inputProps={{ "aria-label": "リピート" }}
-                          checked={item.repeat}
+                          checked={task.repeat}
                         />
                       }
                     />
@@ -52,14 +52,14 @@ export default async function Home() {
                     <Button
                       variant="outlined"
                       component={NextLink}
-                      href={`/items/${item.id}`}
+                      href={`/tasks/${task.id}`}
                     >
                       編集
                     </Button>
                   </TableCell>
                   <TableCell>
                     <Button variant="contained" color="success">
-                      買った
+                      完了
                     </Button>
                   </TableCell>
                 </TableRow>
